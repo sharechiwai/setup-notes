@@ -12,6 +12,5 @@ apt-cache policy docker-ce
 
 sudo apt-get install -y docker-ce
 
-# enable docker daemon start on boot
-
-sudo systemctl status docker 
+# check if  enable docker daemon start on boot by ussing the command below
+# sudo systemctl status docker 
