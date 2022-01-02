@@ -3,30 +3,35 @@
 - [Git for Windows](https://git-scm.com/download/win)
 - [GitHub Desktop](https://desktop.github.com/)
 - [KDiff3](https://download.kde.org/stable/kdiff3/)
-- [nodepad2](https://www.flos-freeware.ch/notepad2.html)
-- [docker](https://docs.docker.com/desktop/windows/install/)
+- [Nodepad2](https://www.flos-freeware.ch/notepad2.html)
+- [Docker](https://docs.docker.com/desktop/windows/install/)
 - [7Zip](https://www.7-zip.org/download.html) - for Windows 11 in order to run `Notepad2` same way as Windows 10, you would need to uninstall `Notepad` app from Windows Store first
 - [Adobe Reader](https://get.adobe.com/reader/)
+- [Flameshot](https://flameshot.org/) - Screenshot tools
 - [Windows Terminal] - Window Store
 
 ## Coding related
 - [nodejs](https://nodejs.org/en/)
-- 
+
 ## VS Code Extension
 - GitHub Copilot
 - Import Cost
 - Prettier
 - GitLens
-- bracket-pair-colorizer - is a native feature on VSCode now
 - ESLint
-- Remote - WSL
-
 
 ## Configuration
+- `File` -> `Preferences` -> `Settings` or `Ctrl + ,`
+- **bracket-pair-colorizer** - is a native feature on VSCode now
+![image bracket-pair-colorizer](../images/bracket-pair-colorization.png)
+- Disable **minimap**
+![image minimap](../images/minimap.png)
+- **Remove Trailing Whitespace**
+![image Remove Trailing Whitespace](../images/trailing-space.png)
+- Set `bash` as default terminal
+![image bash as default terminal](../images/terminal-integrated-shell.png)
 
-react-native
-keep on complainly JAVA_HOME has wrong path
-export JAVA_HOME=C:\Program Files\OpenJDK\openjdk-8u312-b07
-
-cannot beleive the environment variable are different between bash and cmd
-and JAVA_HOME should be the main installed directory rather than the bin folder of the JAVA.exe
+## Troubleshooting
+- environment could be different from `cmd`, `PowerShell`, `bash`
+- can add enviroment variable to bash by `export JAVA_HOME="C:\Program Files\OpenJDK\openjdk-8u312-b07"`
+- `JAVA_HOME` should be the main installed directory rather than the bin folder of the JAVA.exe
