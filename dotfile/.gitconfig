@@ -1,3 +1,24 @@
+[core]
+	editor = \"C:\\Users\\chi\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = [Chi]
+	email =[Chi Email Address]
+# Treat spaces before tabs and all kinds of trailing whitespace as an error
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+	# Make `git rebase` safer on OS X
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+[difftool]
+prompt = true
+
 [alias]
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -89,31 +110,54 @@
 	patchit = "!f() { echo $1.patch | sed s_pull/[0-9]*/commits_commit_ | xargs curl -L | git am --whitespace=fix; }; f"
 	# patchit = "!f() { curl -L $1.patch | git am --whitespace=fix; }; f"
 	patchit-please = "!f() { echo $1.patch | sed s_pull/[0-9]*/commits_commit_ | xargs curl -L | git am -3 --whitespace=fix; }; f"
+	co = checkout
 	# patchit-please = "!f() { curl -L $1.patch | git am -3 --whitespace=fix; }; f"
+
+	cob = checkout -b
+	coo = !git fetch && git checkout
+	br = branch
+	brd = branch -d
+	brD = branch -D
+	merged = branch --merged
+	st = status
+	aa = add -A .
+	cm = commit -m
+	aacm = !git add -A . && git commit
+	aacm = !git add -A . && git commit -m
+	aam = !git add -A . && git commit --amend --no-edit
+	cp = cherry-pick
+	amend = commit --amend -m
+	dev = !git checkout dev && git pull origin dev
+	staging = !git checkout staging && git pull origin staging
+	main = !git checkout main && git pull origin
+	master = !git checkout master && git pull origin
+	po = push origin
+	pu = !git push origin `git branch --show-current`
+	pod = push origin dev
+	pos = push origin staging
+	pom = push origin main
+	poh = push origin HEAD
+	pogm = !git push origin gh-pages && git checkout master && git pull origin master && git rebase gh-pages && git push origin master && git checkout gh-pages
+	pomg = !git push origin master && git checkout gh-pages && git pull origin gh-pages && git rebase master && git push origin gh-pages && git checkout master
+	plo = pull origin
+	plod = pull origin dev
+	plos = pull origin staging
+	plom = pull origin main
+	ploh = pull origin HEAD
+	unstage = reset --soft HEAD^
+	resume = !git reset --soft HEAD~1 && git reset
+	latest = !git fetch && git pull
+	cleanup = !git gc && git remote prune origin
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	f = "!git ls-files | grep -i"
+	gr = grep -Ii
+	la = "!git config -l | grep alias | cut -c 7-"
 
 [apply]
 
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
-
-[core]
-
-	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
-
-	# Treat spaces before tabs and all kinds of trailing whitespace as an error
-	# [default] trailing-space: looks for spaces at the end of a line
-	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-
-	# Make `git rebase` safer on OS X
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
-	editor = nvim
-
-[include]
-	path = .gitconfig_gpg
 
 [color]
 
@@ -140,74 +184,22 @@
 	changed = green
 	untracked = cyan
 
-[diff]
-
-	# Detect copies as well as renames
-	renames = copies
-	tool = kdiff3
-
-[diff "exif"]
-
-	textconv = exif
-
-[difftool]
-
-	prompt = false
-
-[help]
-
-	# Automatically correct and execute mistyped commands
-	autocorrect = 1
-
+[credential]
+	helper = manager-core
 [merge]
-
-	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 	tool = kdiff3
-
-[mergetool]
-
+	conflictStyle = diff3
+[mergetool "kdiff3"]
+	path = C:/Program Files/kdiff3/bin/kdiff3.exe
 	keepBackup = false
-
-[push]
-	# change to maching for machines with older versions of git 1.x.x
-	default = simple
-
-#[url "git@github.com:"]
-
-	#pushInsteadOf = https://github.com/
-	#pushInsteadOf = "github:"
-	#pushInsteadOf = "git://github.com/"
-
-#[url "git://github.com/"]
-
-	#insteadOf = "github:"
-
-#[url "git@gist.github.com:"]
-
-	#insteadOf = "gst:"
-	#pushInsteadOf = "gist:"
-	#pushInsteadOf = "git://gist.github.com/"
-
-#[url "git://gist.github.com/"]
-
-	#insteadOf = "gist:"
-[user]
-	name = Chi 
-	email = [myname@gmail.com] // todo
-
-[remote "origin"]
-  fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
-
-[github]
-         user = sharechiwai
-
-[http]
-	cookiefile = ~/.gitcookies
-
-[credential]
-	helper = store --file ~/.git-credentials
-	helper = cache --timeout 30000
-
-[http "https://gopkg.in"]
-	followRedirects = true
+	prompt = true
+	trustExitCode = false
+[diff]
+	guitool = kdiff3
+[difftool "kdiff3"]
+	path = C:/Program Files/kdiff3/bin/kdiff3.exe
+	trustExitCode = false
+[pull]
+	rebase = false
+	ff = only
