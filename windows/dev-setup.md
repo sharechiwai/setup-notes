@@ -8,7 +8,11 @@
 - [7Zip](https://www.7-zip.org/download.html) - for Windows 11 in order to run `Notepad2` same way as Windows 10, you would need to uninstall `Notepad` app from Windows Store first
 - [Adobe Reader](https://get.adobe.com/reader/)
 - [Flameshot](https://flameshot.org/) - Screenshot tools
-- [Windows Terminal] - Window Store
+- [FireFox](https://www.mozilla.org/en-US/firefox/new/)
+- [Azure Data Studio](https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16&tabs=redhat-install%2Credhat-uninstall#download-azure-data-studio)
+- [Postgresql](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) you can install the client `psql` by selecting the client tools
+- [Core Temp](https://www.alcpu.com/CoreTemp/) CPU Temperature
+- [Java JDK](https://www.oracle.com/hk/java/technologies/downloads/)
 
 ## Coding related
 - [nodejs](https://nodejs.org/en/)
